@@ -14,7 +14,7 @@ export const fetchEvents = unstable_cache(async (city: string, page = 1) => {
   const events = await prisma.eventoEvent.findMany({
     where: {
       city: {
-        equals: city,
+        equals: city === "all" ? undefined : city,
         mode: "insensitive",
       },
     },
